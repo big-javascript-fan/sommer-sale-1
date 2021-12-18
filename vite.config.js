@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import babel from "vite-babel-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,5 +13,5 @@ export default defineConfig({
       https: "https-browserify",
     },
   },
-  plugins: [react()],
+  plugins: [react(), babel()],
 });
