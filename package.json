@@ -42,7 +42,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint --fix \"**/*.{ts,tsx}\""
   },
   "browserslist": {
     "production": [
@@ -73,7 +74,7 @@
     "src/**/*.{ts,tsx,json}": [
       "jest --bail --passWithNoTests",
       "prettier --write",
-      "eslint --fix \"**/*.{ts,tsx}\""
+      "yarn lint"
     ]
   }
 }
