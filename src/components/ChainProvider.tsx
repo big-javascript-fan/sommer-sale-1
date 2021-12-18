@@ -1,33 +1,44 @@
-import { useWeb3React } from "@web3-react/core";
-import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { chainState } from "../store";
-import { IChain } from "../types/chain";
-function ChainProvider({ children }: { children: any }) {
+import {useWeb3React} from '@web3-react/core';
+import React, {useEffect, useState} from 'react';
+import {useRecoilState} from 'recoil';
+import {chainState} from '../store';
+import {IChain} from '../types/chain';
+
+/**
+ *
+ * @param {any} children the children of this provider
+ * @return {any} children the children of this provider
+ * @dev Get's the current chain and set's the chainState to that
+ */
+function ChainProvider({children}: { children: any }) {
   const web3React = useWeb3React();
   const [loaded, setLoaded] = useState(false);
-  const [chain, setChain] = useRecoilState(chainState);
+  const [, setChain] = useRecoilState(chainState);
 
+  /**
+   * @param {number} chainId The Id of the chain to gather data on
+   * @dev Get's the data associated with a specific chain Id
+   */
   async function getChain(chainId: number) {
     // If we can not get the chain Id default to ETH
     if (chainId === undefined || chainId === null) chainId = 1;
-    const chainQuery = await fetch("https://chainid.network/chains.json");
+    const chainQuery = await fetch('https://chainid.network/chains.json');
     const chains = await chainQuery.json();
     const chain = chains.filter(
-      (chain: IChain) => chain.chainId === chainId
+        (chain: IChain) => chain.chainId === chainId,
     )[0];
     setChain(chain);
     setLoaded(true);
   }
 
   useEffect(() => {
-    var chainId = web3React.chainId;
-    if (chainId === undefined) throw new Error("ChainId is null");
+    const chainId = web3React.chainId;
+    if (chainId === undefined) throw new Error('ChainId is null');
     getChain(chainId);
-    //@ts-ignore
+    // @ts-ignore
     if (window.ethereum) {
-      //@ts-ignore
-      window.ethereum.on("chainChanged", (chainId) => {
+      // @ts-ignore
+      window.ethereum.on('chainChanged', (chainId) => {
         getChain(parseInt(chainId, 16));
       });
     }

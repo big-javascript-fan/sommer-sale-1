@@ -1,16 +1,16 @@
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import SubmitButton from "./SubmitButton";
-import FormInput from "./FormTextInput";
-import { useWeb3React } from "@web3-react/core";
-import Property from "../contract/Property.json";
-import FormLabel from "./FormLabel";
-import { Property_address } from "../data";
-import { useEffect, useState } from "react";
-import { useRoute } from "wouter";
-import FormCheckboxInput from "./FormCheckboxInput";
-import { getContract } from "../common";
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import SubmitButton from './SubmitButton';
+import FormInput from './FormTextInput';
+import {useWeb3React} from '@web3-react/core';
+import Property from '../contract/Property.json';
+import FormLabel from './FormLabel';
+import {useEffect, useState} from 'react';
+import {useRoute} from 'wouter';
+import FormCheckboxInput from './FormCheckboxInput';
+import {getContract} from '../common';
+import {propertyAddress} from '../data/index';
 
 const CheckoutSchema = yup.object().shape({
   shares: yup.number().required(),
@@ -23,13 +23,17 @@ const CheckoutBar = () => {
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(CheckoutSchema) });
+    formState: {errors},
+  } = useForm({resolver: yupResolver(CheckoutSchema)});
   const web3React = useWeb3React();
   const [purchasePriceWEI, setPurchasePriceWEI] = useState(0);
   const [purchasePriceETH, setPurchasePriceETH] = useState(0);
-  const [_, params] = useRoute("/project/:id");
+  const [, params] = useRoute('/project/:id');
+  /**
+   * @dev This is called when the form is submitted
+   * @dev and handles purchasing or selling shares
+   * @param {CheckoutData} data The data from the form
+   */
   const onSubmit = async (data: CheckoutData) => {
     const contract = await getContract(web3React);
     if (data.isSelling) {
@@ -38,32 +42,45 @@ const CheckoutBar = () => {
       purchaseShares(contract, data.shares);
     }
   };
+  /**
+   *
+   * @param {any} contract The contract instance to use when purchasing shares
+   * @param {number} shares The amount of shares to purchase
+   */
   async function purchaseShares(contract: any, shares: number) {
     const val = web3React.library.utils
-      .toBN(shares)
-      .mul(web3React.library.utils.toBN(purchasePriceWEI));
-    if (params == null) throw new Error("Invalid project");
+        .toBN(shares)
+        .mul(web3React.library.utils.toBN(purchasePriceWEI));
+    if (params == null) throw new Error('Invalid project');
     contract.methods.purchaseShares(shares, params.id).send({
       from: web3React.account,
       value: val,
     });
   }
+  /**
+   * @dev Handles selling shares for the user
+   * @param {any} contract The contract to use when selling shares
+   * @param {shares} shares The amount of shares to sell
+   */
   async function sellShares(contract: any, shares: number) {
-    if (params == null) throw new Error("Invalid project");
+    if (params == null) throw new Error('Invalid project');
     contract.methods
-      .sellShares(shares, params.id)
-      .send({ from: web3React.account });
+        .sellShares(shares, params.id)
+        .send({from: web3React.account});
   }
+  /**
+   * @dev Get's the price per share for a given property
+   */
   async function getPricePerShare() {
     const contract = new web3React.library.eth.Contract(
-      Property.abi,
-      //@ts-ignore
-      Property_address[web3React.chainId]
+        Property.abi,
+        // @ts-ignore
+        propertyAddress[web3React.chainId],
     );
-    if (params == null) throw new Error("Invalid project");
+    if (params == null) throw new Error('Invalid project');
     const result = await contract.methods.getPricePerShare(params.id).call({});
     setPurchasePriceWEI(result);
-    setPurchasePriceETH(web3React.library.utils.fromWei(result, "ether"));
+    setPurchasePriceETH(web3React.library.utils.fromWei(result, 'ether'));
   }
   useEffect(() => {
     getPricePerShare();

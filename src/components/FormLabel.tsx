@@ -1,4 +1,3 @@
-import { FieldValues, UseFormRegister } from "react-hook-form";
 interface FormLabelProps {
   label: string;
 }

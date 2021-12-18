@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { injected } from "../providers/injected";
-import { network } from "../providers/fallback";
-import { useWeb3React } from "@web3-react/core";
+import React, {useEffect, useState} from 'react';
+import {injected} from '../providers/injected';
+import {network} from '../providers/fallback';
+import {useWeb3React} from '@web3-react/core';
 
-function MetamaskProvider({ children }: { children: any }) {
+/**
+ * @dev If the page is reloaded this try's to get the current
+ * state from metamask and reload it into web3
+ * @param {any} children is the components below this one in the tree
+ * @return {any} children the children of this provider
+ */
+function MetamaskProvider({children}: { children: any }) {
   const {
     active: networkActive,
     error: networkError,
@@ -12,18 +18,18 @@ function MetamaskProvider({ children }: { children: any }) {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     injected
-      .isAuthorized()
-      .then(async (isAuthorized) => {
-        if (isAuthorized && !networkError) {
-          await activateNetwork(injected);
-        } else {
-          await activateNetwork(network);
-        }
-        setLoaded(true);
-      })
-      .catch(() => {
-        setLoaded(true);
-      });
+        .isAuthorized()
+        .then(async (isAuthorized) => {
+          if (isAuthorized && !networkError) {
+            await activateNetwork(injected);
+          } else {
+            await activateNetwork(network);
+          }
+          setLoaded(true);
+        })
+        .catch(() => {
+          setLoaded(true);
+        });
   }, [activateNetwork, networkActive, networkError]);
   if (loaded) {
     return children;

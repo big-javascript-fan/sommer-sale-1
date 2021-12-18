@@ -1,15 +1,11 @@
-import CheckoutBar from "../components/CheckoutBar";
-import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
-import { useRecoilState } from "recoil";
-import { chainState } from "../store";
-import { useRoute } from "wouter";
-import Property from "../contract/Property.json";
+import CheckoutBar from '../components/CheckoutBar';
+import {useRecoilState} from 'recoil';
+import {chainState} from '../store';
+import {useRoute} from 'wouter';
 
 const Project = () => {
   const [chain] = useRecoilState(chainState);
-  const [match, params] = useRoute("/project/:id");
-  const web3React = useWeb3React();
-
+  const [, params] = useRoute('/project/:id');
 
   if (params == null) {
     return (
