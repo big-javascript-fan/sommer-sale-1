@@ -17,6 +17,7 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/network-connector": "^6.1.9",
     "autoprefixer": "^10.4.0",
+    "lint-staged": "^12.1.2",
     "node-libs-browser": "^2.2.1",
     "postcss": "^8.4.5",
     "react": "^17.0.2",
@@ -38,7 +39,8 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -59,7 +61,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.4"
+    "@types/react-helmet": "^6.1.4",
+    "husky": "^7.0.0"
   },
   "husky": {
     "hooks": {
