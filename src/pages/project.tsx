@@ -3,10 +3,21 @@ import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import { useRecoilState } from "recoil";
 import { chainState } from "../store";
 import { useRoute } from "wouter";
+import Property from "../contract/Property.json";
 
 const Project = () => {
   const [chain] = useRecoilState(chainState);
   const [match, params] = useRoute("/project/:id");
+  const web3React = useWeb3React();
+  async function getContract() {
+    const contractInstance = await new web3React.library.eth.Contract(
+      Property.abi,
+      //@ts-ignore
+      Property_address[web3React.chainId]
+    );
+    return contractInstance;
+  }
+
   if (params == null) {
     return (
       <div>
