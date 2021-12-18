@@ -5,7 +5,7 @@ interface SubmitButtonProperties {
 const SubmitButton = (properties: SubmitButtonProperties) => {
   return (
     <input
-      className="bg-slate-400 rounded text-white w-1/4 border p-2"
+      className="w-1/4 p-2 text-white border rounded bg-slate-400"
       type="submit"
       value="Submit"
     />

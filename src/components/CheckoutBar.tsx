@@ -90,7 +90,7 @@ const CheckoutBar = () => {
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <form
-      className="flex flex-col justify-center items-center"
+      className="flex flex-col items-center justify-center"
       onSubmit={handleSubmit(onSubmit)}
     >
       <FormLabel label="Check if you are selling" />

@@ -21,6 +21,8 @@ module.exports = {
     "plugin:regexp/recommended",
     "plugin:no-unsanitized/DOM",
     "plugin:compat/recommended",
+    "plugin:json/recommended",
+    "plugin:tailwind/recommended",
   ],
   rules: {
     // Basic rules:
