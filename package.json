@@ -60,5 +60,17 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,json}": [
+      "jest --bail --passWithNoTests",
+      "prettier --write",
+      "eslint --fix src/"
+    ]
   }
 }
