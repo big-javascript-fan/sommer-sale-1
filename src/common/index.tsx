@@ -1,5 +1,5 @@
 import Property from '../contract/Property.json';
-import {propertyAddress} from '../data/index';
+import {propertyAddress} from '../data';
 
 /**
  * @dev This is used to get an instance of the current correct contract
@@ -8,10 +8,9 @@ import {propertyAddress} from '../data/index';
  * @return {any} The contract instance
  */
 export async function getContract(web3React: any) {
-  const contractInstance = await new web3React.library.eth.Contract(
+  return await new web3React.library.eth.Contract(
       Property.abi,
       // @ts-ignore
       propertyAddress[web3React.chainId],
   );
-  return contractInstance;
 }

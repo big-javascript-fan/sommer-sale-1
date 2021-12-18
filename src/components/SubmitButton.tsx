@@ -1,8 +1,8 @@
-interface SubmitButtonProps {
+interface SubmitButtonProperties {
   text: string;
 }
 
-const SubmitButton = (props: SubmitButtonProps) => {
+const SubmitButton = (properties: SubmitButtonProperties) => {
   return (
     <input
       className="bg-slate-400 rounded text-white w-1/4 border p-2"

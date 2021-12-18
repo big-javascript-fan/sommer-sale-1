@@ -1,16 +1,16 @@
 import {FieldValues, UseFormRegister} from 'react-hook-form';
 
-interface FormInputProps {
+interface FormInputProperties {
   name: string;
   register: UseFormRegister<FieldValues>;
 }
 
-const FormCheckboxInput = (props: FormInputProps) => {
+const FormCheckboxInput = (properties: FormInputProperties) => {
   return (
     <input
       className="border-amber-500 border-2 border-solid mb-10"
       type="checkbox"
-      {...props.register(props.name)}
+      {...properties.register(properties.name)}
     />
   );
 };

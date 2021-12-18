@@ -20,11 +20,9 @@ function MetamaskProvider({children}: { children: any }) {
     injected
         .isAuthorized()
         .then(async (isAuthorized) => {
-          if (isAuthorized && !networkError) {
-            await activateNetwork(injected);
-          } else {
-            await activateNetwork(network);
-          }
+          await (isAuthorized && !networkError ?
+          activateNetwork(injected) :
+          activateNetwork(network));
           setLoaded(true);
         })
         .catch(() => {

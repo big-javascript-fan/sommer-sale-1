@@ -1,9 +1,9 @@
-interface FormLabelProps {
+interface FormLabelProperties {
   label: string;
 }
 
-const FormLabel = (props: FormLabelProps) => {
-  return <label>{props.label}</label>;
+const FormLabel = (properties: FormLabelProperties) => {
+  return <label>{properties.label}</label>;
 };
 
 export default FormLabel;

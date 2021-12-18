@@ -1,6 +1,6 @@
 import {FieldValues, UseFormRegister} from 'react-hook-form';
 
-interface FormInputProps {
+interface FormInputProperties {
   default: any;
   type: string;
   placeholder: string;
@@ -8,14 +8,14 @@ interface FormInputProps {
   register: UseFormRegister<FieldValues>;
 }
 
-const FormTextInput = (props: FormInputProps) => {
+const FormTextInput = (properties: FormInputProperties) => {
   return (
     <input
       className="border-amber-500 border-2 border-solid mb-10"
-      defaultValue={props.default}
-      placeholder={props.placeholder}
-      type={props.type}
-      {...props.register(props.name)}
+      defaultValue={properties.default}
+      placeholder={properties.placeholder}
+      type={properties.type}
+      {...properties.register(properties.name)}
     />
   );
 };

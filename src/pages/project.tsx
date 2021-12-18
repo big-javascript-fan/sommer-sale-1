@@ -5,9 +5,9 @@ import {useRoute} from 'wouter';
 
 const Project = () => {
   const [chain] = useRecoilState(chainState);
-  const [, params] = useRoute('/project/:id');
+  const [, parameters] = useRoute('/project/:id');
 
-  if (params == null) {
+  if (parameters == undefined) {
     return (
       <div>
         <h1>Project not found</h1>
@@ -18,7 +18,7 @@ const Project = () => {
     <div>
       <h3>Project name...</h3>
       <h2>Chain: {chain.chain}</h2>
-      <h2>ID: {params.id}</h2>
+      <h2>ID: {parameters.id}</h2>
       <CheckoutBar />
     </div>
   );

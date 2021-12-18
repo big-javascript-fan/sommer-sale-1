@@ -10,7 +10,7 @@ import {useEffect, useState} from 'react';
 import {useRoute} from 'wouter';
 import FormCheckboxInput from './FormCheckboxInput';
 import {getContract} from '../common';
-import {propertyAddress} from '../data/index';
+import {propertyAddress} from '../data';
 
 const CheckoutSchema = yup.object().shape({
   shares: yup.number().required(),
@@ -28,7 +28,7 @@ const CheckoutBar = () => {
   const web3React = useWeb3React();
   const [purchasePriceWEI, setPurchasePriceWEI] = useState(0);
   const [purchasePriceETH, setPurchasePriceETH] = useState(0);
-  const [, params] = useRoute('/project/:id');
+  const [, parameters] = useRoute('/project/:id');
   /**
    * @dev This is called when the form is submitted
    * @dev and handles purchasing or selling shares
@@ -48,13 +48,13 @@ const CheckoutBar = () => {
    * @param {number} shares The amount of shares to purchase
    */
   async function purchaseShares(contract: any, shares: number) {
-    const val = web3React.library.utils
+    const value = web3React.library.utils
         .toBN(shares)
         .mul(web3React.library.utils.toBN(purchasePriceWEI));
-    if (params == null) throw new Error('Invalid project');
-    contract.methods.purchaseShares(shares, params.id).send({
+    if (parameters == undefined) throw new Error('Invalid project');
+    contract.methods.purchaseShares(shares, parameters.id).send({
       from: web3React.account,
-      value: val,
+      value: value,
     });
   }
   /**
@@ -63,9 +63,9 @@ const CheckoutBar = () => {
    * @param {shares} shares The amount of shares to sell
    */
   async function sellShares(contract: any, shares: number) {
-    if (params == null) throw new Error('Invalid project');
+    if (parameters == undefined) throw new Error('Invalid project');
     contract.methods
-        .sellShares(shares, params.id)
+        .sellShares(shares, parameters.id)
         .send({from: web3React.account});
   }
   /**
@@ -77,8 +77,10 @@ const CheckoutBar = () => {
         // @ts-ignore
         propertyAddress[web3React.chainId],
     );
-    if (params == null) throw new Error('Invalid project');
-    const result = await contract.methods.getPricePerShare(params.id).call({});
+    if (parameters == undefined) throw new Error('Invalid project');
+    const result = await contract.methods
+        .getPricePerShare(parameters.id)
+        .call({});
     setPurchasePriceWEI(result);
     setPurchasePriceETH(web3React.library.utils.fromWei(result, 'ether'));
   }

@@ -24,9 +24,7 @@ function ChainProvider({children}: { children: any }) {
     if (chainId === undefined || chainId === null) chainId = 1;
     const chainQuery = await fetch('https://chainid.network/chains.json');
     const chains = await chainQuery.json();
-    const chain = chains.filter(
-        (chain: IChain) => chain.chainId === chainId,
-    )[0];
+    const chain = chains.find((chain: IChain) => chain.chainId === chainId);
     setChain(chain);
     setLoaded(true);
   }
@@ -39,7 +37,7 @@ function ChainProvider({children}: { children: any }) {
     if (window.ethereum) {
       // @ts-ignore
       window.ethereum.on('chainChanged', (chainId) => {
-        getChain(parseInt(chainId, 16));
+        getChain(Number.parseInt(chainId, 16));
       });
     }
   }, []);

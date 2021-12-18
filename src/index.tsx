@@ -32,7 +32,7 @@ ReactDOM.render(
         </Web3ReactProvider>
       </RecoilRoot>
     </React.StrictMode>,
-    document.getElementById('root'),
+    document.querySelector('#root'),
 );
 
 // If you want to start measuring performance in your app, pass a function
