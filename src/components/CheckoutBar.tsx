@@ -43,13 +43,16 @@ const CheckoutBar = () => {
       .toBN(shares)
       .mul(web3React.library.utils.toBN(purchasePriceWEI));
     if (params == null) throw new Error("Invalid project");
-    contract.methods.purchaseShares(shares, params.id).estimateGas({
+    contract.methods.purchaseShares(shares, params.id).send({
       from: web3React.account,
       value: val,
     });
   }
   async function sellShares(contract: any, shares: number) {
-    console.warn("Not implemented yet");
+    if (params == null) throw new Error("Invalid project");
+    contract.methods
+      .sellShares(shares, params.id)
+      .send({ from: web3React.account });
   }
   async function getPricePerShare() {
     const contract = new web3React.library.eth.Contract(

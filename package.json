@@ -17,9 +17,11 @@
     "@web3-react/injected-connector": "^6.0.7",
     "@web3-react/network-connector": "^6.1.9",
     "autoprefixer": "^10.4.0",
+    "jest": "^27.4.5",
     "lint-staged": "^12.1.2",
     "node-libs-browser": "^2.2.1",
     "postcss": "^8.4.5",
+    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
@@ -42,12 +44,6 @@
     "serve": "vite preview",
     "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -62,6 +58,10 @@
   },
   "devDependencies": {
     "@types/react-helmet": "^6.1.4",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.5.0",
+    "eslint-plugin-react": "^7.27.1",
     "husky": "^7.0.0"
   },
   "husky": {
@@ -73,7 +73,7 @@
     "src/**/*.{ts,tsx,json}": [
       "jest --bail --passWithNoTests",
       "prettier --write",
-      "eslint --fix src/"
+      "eslint --fix \"**/*.{ts,tsx}\""
     ]
   }
 }
