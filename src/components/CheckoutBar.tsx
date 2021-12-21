@@ -11,6 +11,7 @@ import {useRoute} from 'wouter';
 import FormCheckboxInput from './FormCheckboxInput';
 import {getContract} from '../common';
 import {propertyAddress} from '../data';
+import en from '../constants/en.json';
 
 const CheckoutSchema = yup.object().shape({
   shares: yup.number().required(),
@@ -23,12 +24,14 @@ const CheckoutBar = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: {errors},
   } = useForm({resolver: yupResolver(CheckoutSchema)});
   const web3React = useWeb3React();
   const [purchasePriceWEI, setPurchasePriceWEI] = useState(0);
   const [purchasePriceETH, setPurchasePriceETH] = useState(0);
   const [, parameters] = useRoute('/project/:id');
+  const isSellingWatch = watch('isSelling', false);
   /**
    * @dev This is called when the form is submitted
    * @dev and handles purchasing or selling shares
@@ -106,7 +109,11 @@ const CheckoutBar = () => {
       {/* errors will return when field validation fails  */}
       {errors.shares && <span>This field is required</span>}
 
-      <SubmitButton text="Submit" />
+      {isSellingWatch ? (
+        <SubmitButton text={en.sellShares} />
+      ) : (
+        <SubmitButton text={en.purchaseShares} />
+      )}
     </form>
   );
 };

@@ -1,7 +1,9 @@
 import CheckoutBar from '../components/CheckoutBar';
 import {useRecoilState} from 'recoil';
 import {chainState} from '../store';
+
 import {useRoute} from 'wouter';
+import en from '../constants/en.json';
 
 const Project = () => {
   const [chain] = useRecoilState(chainState);
@@ -10,7 +12,7 @@ const Project = () => {
   if (parameters == undefined) {
     return (
       <div>
-        <h1>Project not found</h1>
+        <h1>{en.projectNotFound}</h1>
       </div>
     );
   }

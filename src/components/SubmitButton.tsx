@@ -7,7 +7,7 @@ const SubmitButton = (properties: SubmitButtonProperties) => {
     <input
       className="w-1/4 p-2 text-white border rounded bg-slate-400"
       type="submit"
-      value="Submit"
+      value={properties.text}
     />
   );
 };
