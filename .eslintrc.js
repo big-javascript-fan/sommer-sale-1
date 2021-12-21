@@ -11,7 +11,6 @@ module.exports = {
     "this",
     "regexp",
     "promise",
-    "filenames",
     "unicorn",
   ],
   extends: [
@@ -35,8 +34,6 @@ module.exports = {
     // Promise rules:
     "promise/no-nesting": "error",
     "promise/valid-params": "error",
-    // File names
-    "filenames/match-exported": [2, [null, "kebab", "camel"]],
     // Unicorn
     "unicorn/no-empty-file": "error",
     "unicorn/no-lonely-if": "error",

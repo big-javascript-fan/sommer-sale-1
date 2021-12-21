@@ -11,7 +11,7 @@ import {useRoute} from 'wouter';
 import FormCheckboxInput from './FormCheckboxInput';
 import {getContract} from '../common';
 import {propertyAddress} from '../data';
-import en from '../constants/en.json';
+import en from '../localization/en';
 
 const CheckoutSchema = yup.object().shape({
   shares: yup.number().required(),
@@ -110,9 +110,9 @@ const CheckoutBar = () => {
       {errors.shares && <span>This field is required</span>}
 
       {isSellingWatch ? (
-        <SubmitButton text={en.sellShares} />
+        <SubmitButton text={en.t('sellShares')} />
       ) : (
-        <SubmitButton text={en.purchaseShares} />
+        <SubmitButton text={en.t('purchaseShares')} />
       )}
     </form>
   );
