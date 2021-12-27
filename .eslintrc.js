@@ -29,6 +29,7 @@ module.exports = {
     "no-unused-vars": "warn",
     "unused-imports/no-unused-imports": "error",
     "max-len": "warn",
+    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
     // Sonar rules:
     "sonarjs/no-duplicate-string": "warn",
     // Promise rules:
