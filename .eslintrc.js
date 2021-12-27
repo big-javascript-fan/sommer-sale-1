@@ -28,7 +28,8 @@ module.exports = {
     "no-console": "error",
     "no-unused-vars": "warn",
     "unused-imports/no-unused-imports": "error",
-    "max-len": "warn",
+    "max-len": "off",
+    "require-jsdoc": "warn",
     // Sonar rules:
     "sonarjs/no-duplicate-string": "warn",
     // Promise rules:
