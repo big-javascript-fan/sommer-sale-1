@@ -28,6 +28,7 @@ module.exports = {
     "no-console": "error",
     "no-unused-vars": "warn",
     "unused-imports/no-unused-imports": "error",
+    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
     "max-len": "off",
     "require-jsdoc": "warn",
     // Sonar rules:

@@ -4,8 +4,10 @@ import {chainState} from '../store';
 
 import {useRoute} from 'wouter';
 import en from '../localization/en';
-
-const Project = () => {
+/**
+ * @return {jsx} rendered component
+ */
+export default function Project() {
   const [chain] = useRecoilState(chainState);
   const [, parameters] = useRoute('/project/:id');
 
@@ -24,5 +26,4 @@ const Project = () => {
       <CheckoutBar />
     </div>
   );
-};
-export default Project;
+}

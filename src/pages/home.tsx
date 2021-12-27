@@ -1,7 +1,10 @@
+/* eslint-disable linebreak-style */
+import HeroSection from '../components/HeroSection';
+
 const Home = () => {
   return (
     <div>
-      <h1>Home</h1>
+      <HeroSection />
     </div>
   );
 };
