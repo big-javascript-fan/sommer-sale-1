@@ -24,7 +24,7 @@ const ProtfolioProjects = [
  * @return {jsx} rendered component
  *  @param {obj} props data
  */
-export default function PortfolioCard(props) {
+export default function PortfolioCard(props: any) {
   return (
     <>
       <div className="max-w-3xl mx-auto mt-8 grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">

@@ -17,7 +17,7 @@ const navigation = [
  * classNames component
  * @return {string} result
  */
-function classNames(...classes) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 

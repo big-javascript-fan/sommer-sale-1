@@ -1,7 +1,7 @@
 import ProjectDetails from './pages/ProjectDetails';
 import {Route, Switch} from 'wouter';
-import Mint from './pages/Mint';
-import Home from './pages/Home';
+import Mint from './pages/mint';
+import Home from './pages/home';
 import Portfolio from './pages/Portfolio';
 import Header from './components/Header';
 import Projects from './pages/Projects';
