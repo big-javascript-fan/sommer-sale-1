@@ -1,7 +1,7 @@
 import ProjectDetails from './pages/ProjectDetails';
 import {Route, Switch} from 'wouter';
-import Mint from './pages/mint';
-import Home from './pages/home';
+import Mint from './pages/Mint';
+import Home from './pages/Home';
 import Portfolio from './pages/Portfolio';
 import Header from './components/Header';
 import Projects from './pages/Projects';
@@ -20,6 +20,7 @@ function App() {
           <Route path="/projects/:id" component={ProjectDetails} />
           <Route path="/mint" component={Mint} />
           <Route path="/projects" component={Projects} />
+          <Route path="/project/:id" component={ProjectDetails} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/" component={Home} />
         </Switch>
