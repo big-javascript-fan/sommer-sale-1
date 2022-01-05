@@ -80,14 +80,14 @@ export default function HeroSection() {
                       <div className="col-span-1">
                         <a href={data.social_media.telegram} target="_blank">
                           <button className="w-full px-4 py-3 font-medium text-gray-700 bg-indigo-100 shadow rounded-md hover:bg-indigo-600 hover:text-slate-300">
-                            Join Now
+                            Telegram
                           </button>
                         </a>
                       </div>
                       <div className="col-span-1">
                         <a href={data.social_media.twitter} target="_blank">
                           <button className="w-full px-4 py-3 font-medium text-gray-700 bg-indigo-100 shadow rounded-md hover:bg-indigo-600 hover:text-slate-300">
-                            Follow on Twitter
+                            Twitter
                           </button>
                         </a>
                       </div>
@@ -95,20 +95,9 @@ export default function HeroSection() {
                   </div>
                 </div>
               </div>
-              <div className="mt-12 -mb-16 sm:-mb-48 lg:m-0 lg:relative">
-                <div className="max-w-md px-4 mx-auto sm:max-w-2xl sm:px-6 lg:max-w-none lg:px-0">
-                  <img
-                    className="w-full lg:absolute lg:inset-y-0 lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                    src=""
-                    alt=""
-                  />
-                </div>
-              </div>
             </div>
           </div>
         </div>
-
-        {/* -----------------More home page content here---------------*/}
       </main>
     </div>
   );
