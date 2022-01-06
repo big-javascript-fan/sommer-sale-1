@@ -3,9 +3,25 @@
 @tailwind utilities;
 
 .form_input {
-    @apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md text-slate-50 bg-gray-800 border-0;
+  @apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md text-slate-50 bg-gray-800 border-0;
 }
 
 .submit_btn {
-    @apply inline-flex justify-center py-2 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+  @apply inline-flex justify-center py-2 px-8 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+}
+
+.submit_btn_active {
+  @apply hover:bg-indigo-700;
+}
+
+.submit_btn_disabled {
+  @apply bg-white bg-opacity-10;
+}
+
+.tab_btn {
+  @apply inline-flex justify-center py-2 px-8 border border-transparent shadow-sm text-sm font-medium rounded-3xl text-white text-opacity-70 focus:outline-none;
+}
+
+.tab_btn_selected {
+  @apply bg-opacity-10 bg-white text-white;
 }

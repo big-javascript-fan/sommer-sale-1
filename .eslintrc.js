@@ -28,11 +28,15 @@ module.exports = {
     "no-console": "error",
     "no-unused-vars": "warn",
     "unused-imports/no-unused-imports": "error",
-    'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
+    "linebreak-style": [
+      "error",
+      process.platform === "win32" ? "windows" : "unix",
+    ],
     "max-len": "off",
     "require-jsdoc": "warn",
     // Sonar rules:
     "sonarjs/no-duplicate-string": "warn",
+    "sonarjs/no-redundant-boolean": "warn",
     // Promise rules:
     "promise/no-nesting": "error",
     "promise/valid-params": "error",

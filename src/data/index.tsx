@@ -1,5 +1,19 @@
-export const propertyAddress = {
-  43_113: '0xA6D2ED4a8B8B099ABA71eE0dD3804495dACd8435',
-  3: '0x5173d3aF569d8788297A76331AE8d3C5FbaD41F8',
-  1_666_700_000: '0x6A7F9a362943c0e71D82b4964a592F1a855E1C4b',
+export const propertyAddresses = {
+  43_113: '0x5b1A47B1812442fB975F63f2aD0AB6AAB223aaAe',
+  3: '0x3de837993915FE59f69eF2e87321C0E3187fBdcB',
+  1_666_700_000: '0x6f9Ead49Cd8BdE8c876DAc775b6E517CD079698A',
 };
+
+export interface Attribute {
+  key: string;
+  value: string;
+}
+
+export interface Property {
+  name: string;
+  details: string;
+  highlights: string[];
+  images: string[];
+  attributes: Attribute[];
+  tokenName: string;
+}

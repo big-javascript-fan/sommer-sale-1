@@ -1,4 +1,4 @@
-import ProjectDetails from './pages/ProjectDetails';
+import Project from './pages/Project';
 import {Route, Switch} from 'wouter';
 import Mint from './pages/Mint';
 import Home from './pages/Home';
@@ -17,10 +17,9 @@ function App() {
       <Header />
       <div className="flex flex-col min-h-screen overflow-hidden bg-gray-900">
         <Switch>
-          <Route path="/projects/:id" component={ProjectDetails} />
           <Route path="/mint" component={Mint} />
           <Route path="/projects" component={Projects} />
-          <Route path="/project/:id" component={ProjectDetails} />
+          <Route path="/project/:id" component={Project} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/" component={Home} />
         </Switch>

@@ -1,7 +1,10 @@
 {
   "projectNotFound": "Project not found",
-  "purchaseShares": "Purchase shares",
-  "sellShares": "Sell shares",
+  "purchaseShares": "Buy {{tokens}} tokens",
+  "sellShares": "Sell {{tokens}} tokens",
+  "invalidPurchaseShares": "Buy tokens",
+  "invalidSellShares": "Sell tokens",
+  "purchaseHeaderText": "Buy Equity",
   "minting_form_description_field_info": "Write more than 500 words about this project.",
   "landing_page_hero_title": "Invest in",
   "landing_page_hero_title_colored": "Virtual Real Estate",
