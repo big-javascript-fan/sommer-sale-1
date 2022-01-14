@@ -3,7 +3,6 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import SubmitButton from '../SubmitButton';
 import FormInput from '../FormTextInput';
-import {useWeb3React} from '@web3-react/core';
 import en from '../../localization/en';
 import useSellShares from '../../hooks/useSellShares';
 
@@ -25,7 +24,6 @@ export default function SellForm({purchasePriceWEI, id}: SellFormParams) {
     watch,
     formState: {errors},
   } = useForm({resolver: yupResolver(CheckoutSchema)});
-  const web3React = useWeb3React();
   const sellShares = useSellShares();
   const shares = watch('shares', 100);
 

@@ -5,8 +5,6 @@ import SubmitButton from '../SubmitButton';
 import FormInput from '../FormTextInput';
 import en from '../../localization/en';
 import usePurchaseShares from '../../hooks/usePurchaseShares';
-import {useRecoilState} from 'recoil';
-import {chainState} from '../../store';
 
 const CheckoutSchema = yup.object().shape({
   shares: yup.number().required(),
@@ -31,7 +29,6 @@ export default function PurchaseForm({
   } = useForm({resolver: yupResolver(CheckoutSchema)});
   const purchaseShares = usePurchaseShares();
   const shares = watch('shares', 100);
-  const [chain] = useRecoilState(chainState);
 
   /**
    * @dev This is called when the form is submitted

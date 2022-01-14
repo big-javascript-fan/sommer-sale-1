@@ -4,16 +4,29 @@ export const propertyAddresses = {
   1_666_700_000: '0x6f9Ead49Cd8BdE8c876DAc775b6E517CD079698A',
 };
 
-export interface Attribute {
+export interface ProjectDetail {
+  key: string;
+  value: string;
+}
+
+export interface DescriptionItem {
+  title: string;
+  value: string;
+}
+
+export interface AttributeItem {
   key: string;
   value: string;
 }
 
 export interface Property {
   name: string;
-  details: string;
-  highlights: string[];
+  fractionToken: {
+    tokenName: string;
+    symbol: string;
+  };
+  projectDetails: ProjectDetail[];
+  description: DescriptionItem[];
+  attributes: AttributeItem[];
   images: string[];
-  attributes: Attribute[];
-  tokenName: string;
 }

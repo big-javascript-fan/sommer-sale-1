@@ -89,16 +89,31 @@ export default function Project() {
         {/* ---------------Details Section---------------- */}
         <div className="max-w-2xl px-4 pt-10 mx-auto sm:px-6 lg:max-w-7xl lg:pt-16 lg:px-8 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8">
           <div className="py-10 lg:pt-6 lg:pb-16 lg:col-span-2">
-            {/* Description and details */}
+            {property?.description.map((item) => {
+              return (
+                <>
+                  <div>
+                    <h2 className="text-xl font-medium text-slate-50">
+                      {item.title}
+                    </h2>
+
+                    <div className="mt-4 space-y-6 ">
+                      <p className="text-base text-slate-300">{item.value}</p>
+                    </div>
+                  </div>
+                </>
+              );
+            })}
+            {/* Description and details
             <div>
               <h2 className="text-xl font-medium text-slate-50">Details</h2>
 
               <div className="mt-4 space-y-6 ">
                 <p className="text-base text-slate-300">{property?.details}</p>
               </div>
-            </div>
+            </div> */}
 
-            <div className="mt-10">
+            {/* <div className="mt-10">
               <h3 className="text-xl font-medium text-slate-50">Highlights</h3>
 
               <div className="mt-4">
@@ -110,7 +125,7 @@ export default function Project() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </div> */}
 
             {/* ---------------Equity Section---------------- */}
 
@@ -138,7 +153,7 @@ export default function Project() {
                     Token Name
                   </dt>
                   <dd className="mt-1 text-xl font-semibold text-slate-50">
-                    {property?.tokenName}
+                    {property?.fractionToken.tokenName}
                   </dd>
                 </div>
               </dl>
@@ -191,6 +206,27 @@ export default function Project() {
               <div className="px-4 py-8 mt-5 border-2 sm:px-6 rounded-2xl border-slate-800">
                 <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3">
                   {property?.attributes.map((item: any) => (
+                    <div className="sm:col-span-1">
+                      <dt className="text-gray-500 text-m">{item.key}</dt>
+                      <dd className="mt-1 text-m text-slate-50">
+                        {item.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </section>
+
+            {/* --------------- Project Details Section---------------- */}
+
+            <section aria-labelledby="shipping-heading" className="mt-10">
+              <h2 className="text-xl font-medium text-slate-50">
+                Project Details
+              </h2>
+
+              <div className="px-4 py-8 mt-5 border-2 sm:px-6 rounded-2xl border-slate-800">
+                <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3">
+                  {property?.projectDetails.map((item: any) => (
                     <div className="sm:col-span-1">
                       <dt className="text-gray-500 text-m">{item.key}</dt>
                       <dd className="mt-1 text-m text-slate-50">
