@@ -5,6 +5,8 @@ import SubmitButton from '../SubmitButton';
 import FormInput from '../FormTextInput';
 import en from '../../localization/en';
 import usePurchaseShares from '../../hooks/usePurchaseShares';
+import {useWeb3React} from '@web3-react/core';
+import useConnectWallet from '../../hooks/useConnectWallet';
 
 const CheckoutSchema = yup.object().shape({
   shares: yup.number().required(),
@@ -29,6 +31,8 @@ export default function PurchaseForm({
   } = useForm({resolver: yupResolver(CheckoutSchema)});
   const purchaseShares = usePurchaseShares();
   const shares = watch('shares', 100);
+  const web3React = useWeb3React();
+  const connectWallet = useConnectWallet();
 
   /**
    * @dev This is called when the form is submitted
@@ -50,15 +54,21 @@ export default function PurchaseForm({
         type="number"
         register={register}
       />
-
-      <SubmitButton
-        disabled={parseInt(shares) == 0 || shares == ''}
-        text={
-          parseInt(shares) == 0 || shares == '' ?
-            en.t('invalidPurchaseShares') :
-            en.t('purchaseShares', {tokens: parseInt(shares)})
-        }
-      />
+      {web3React.account != null ? (
+        <SubmitButton
+          disabled={parseInt(shares) == 0 || shares == ''}
+          text={
+            parseInt(shares) == 0 || shares == '' ?
+              en.t('invalidPurchaseShares') :
+              en.t('purchaseShares', {tokens: parseInt(shares)})
+          }
+        />
+      ) : (
+        <SubmitButton
+          onClick={() => connectWallet()}
+          text={en.t('connect_wallet')}
+        />
+      )}
     </form>
   );
 }

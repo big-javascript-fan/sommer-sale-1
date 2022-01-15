@@ -1,9 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
 import {Disclosure} from '@headlessui/react';
 import {MenuIcon, XIcon} from '@heroicons/react/outline';
+import {useWeb3React} from '@web3-react/core';
 import {Link} from 'wouter';
 import Logo from '../assets/img/logo.png';
 import LogoSM from '../assets/img/sm-logo.png';
+import useConnectWallet from '../hooks/useConnectWallet';
+import en from '../localization/en';
 
 const navigation = [
   {name: 'Home', href: '/', current: false},
@@ -26,6 +29,8 @@ function classNames(...classes: any) {
  * @return {jsx} rendered component
  */
 export default function Header() {
+  const web3 = useWeb3React();
+  const connectWallet = useConnectWallet();
   return (
     <Disclosure as="nav" className="bg-gray-900">
       {({open}) => (
@@ -77,12 +82,22 @@ export default function Header() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-gray-700"
-                >
-                  Connect Wallet
-                </a>
+                {web3.account == null ? (
+                  <a
+                    href="#"
+                    onClick={() => connectWallet()}
+                    className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-gray-700"
+                  >
+                    {en.t('connect_wallet')}
+                  </a>
+                ) : (
+                  <a
+                    href="#"
+                    className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-gray-600 border border-transparent rounded-md hover:bg-gray-700"
+                  >
+                    {en.t('wallet_connected')}
+                  </a>
+                )}
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@ interface SubmitButtonProperties {
   text: string;
   className?: string;
   disabled?: boolean;
+  onClick?: any;
 }
 
 const SubmitButton = (properties: SubmitButtonProperties) => {
@@ -14,6 +15,7 @@ const SubmitButton = (properties: SubmitButtonProperties) => {
       } ${properties.className}`}
       type="submit"
       disabled={properties.disabled}
+      onClick={properties.onClick}
       value={properties.text}
     />
   );

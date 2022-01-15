@@ -5,6 +5,8 @@
   "invalidPurchaseShares": "Buy tokens",
   "invalidSellShares": "Sell tokens",
   "purchaseHeaderText": "Buy Equity",
+  "connect_wallet": "Connect wallet",
+  "wallet_connected": "Wallet connected",
   "minting_form_description_field_info": "Write more than 500 words about this project.",
   "landing_page_hero_title": "Invest in",
   "landing_page_hero_title_colored": "Virtual Real Estate",
