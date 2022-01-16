@@ -159,11 +159,11 @@ export default function Project() {
               </dl>
               <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-4">
                 <div
-                  key="Total Value"
+                  key="Market Cap"
                   className="px-4 py-5 overflow-hidden bg-gray-800 shadow rounded-2xl sm:p-6"
                 >
                   <dt className="text-sm font-medium truncate text-slate-300">
-                    Total Value
+                    Market Cap
                   </dt>
                   <dd className="mt-1 text-xl font-semibold text-slate-50">
                     {web3React.library.utils.fromWei(

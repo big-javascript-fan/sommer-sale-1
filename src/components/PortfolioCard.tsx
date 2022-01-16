@@ -1,30 +1,57 @@
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import React from 'react';
-/**
- * @return {Array} fake data
- */
-const ProtfolioProjects = [
-  {
-    id: 1,
-    name: 'XStairship Apartments',
-    href: '#',
-    price: '354 VST',
-    imageSrc:
-      'https://685firstaverentals.com/uploads/application/files/static-gallery/2/building.jpg',
-    imageAlt: 'alt text',
-    description:
-      'Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit',
-    token_amount: 140,
-    token_value: 450,
-    total_value: '$120,555',
-    apy: '23%',
-  },
-];
+import {useForm} from 'react-hook-form';
+import FormTextInput from './FormTextInput';
+import SubmitButton from './SubmitButton';
+import {useWeb3React} from '@web3-react/core';
+import useStakedNative from '../hooks/useStakedNative';
+import useStakedTokens from '../hooks/useStakedTokens';
+import {useRecoilState} from 'recoil';
+import {chainState} from '../store';
+import useStake from '../hooks/useStake';
 
 /**
  * @return {jsx} rendered component
  *  @param {obj} props data
  */
+
+const StakeSchema = yup.object().shape({
+  tokensToStake: yup.number().required(),
+  secondsSince1970: yup.string().required(),
+});
+
+type StakeData = yup.InferType<typeof StakeSchema>;
+
 export default function PortfolioCard(props: any) {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: {errors},
+  } = useForm({resolver: yupResolver(StakeSchema)});
+  const web3React = useWeb3React();
+  if (web3React.account == null) throw new Error('Not authenticated');
+  const [stakedNative, loadingStakedNative] = useStakedNative(
+      props.id,
+      web3React.account,
+  );
+  const [stakedTokens, loadingStakedTokens] = useStakedTokens(
+      props.id,
+      web3React.account,
+  );
+  const stake = useStake();
+  const tokensToStake = watch('tokensToStake', 100);
+  const [chain] = useRecoilState(chainState);
+
+  async function stakeTokens(data: StakeData) {
+    await stake(
+        data.tokensToStake,
+        props.pricePerShare,
+        props.id,
+        data.secondsSince1970,
+    );
+  }
   return (
     <>
       <div className="max-w-3xl mx-auto mt-8 grid grid-cols-1 gap-6 sm:px-6 lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-3">
@@ -57,27 +84,44 @@ export default function PortfolioCard(props: any) {
               <div className="px-4 py-8 sm:px-6">
                 <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
                   <div className="sm:col-span-1">
-                    <dt className="text-sm font-medium text-gray-500">
-                      Token Amount
-                    </dt>
+                    <dt className="text-sm font-medium text-gray-500">Owned</dt>
                     <dd className="mt-1 text-sm text-slate-50">
-                      {props.token_amount}
+                      {parseInt(props.held) + parseInt(stakedTokens)}{' '}
+                      <span className="text-gray-400">{props.symbol}</span>
+                    </dd>
+                  </div>
+                  <div className="sm:col-span-1">
+                    <dt className="text-sm font-medium text-gray-500">Worth</dt>
+                    <dd className="mt-1 text-sm text-slate-50">
+                      {props.worth}{' '}
+                      <span className="text-gray-400">{chain.chain}</span>
                     </dd>
                   </div>
                   <div className="sm:col-span-1">
                     <dt className="text-sm font-medium text-gray-500">
-                      Current Token Value
+                      Staked Tokens
                     </dt>
                     <dd className="mt-1 text-sm text-slate-50">
-                      {props.token_value}
+                      {stakedTokens}{' '}
+                      <span className="text-gray-400">{props.symbol}</span>
                     </dd>
                   </div>
                   <div className="sm:col-span-1">
                     <dt className="text-sm font-medium text-gray-500">
-                      Total Value
+                      Staked {chain.chain}
                     </dt>
                     <dd className="mt-1 text-sm text-slate-50">
-                      {props.total_value}
+                      {web3React.library.utils.fromWei(stakedNative, 'ether')}{' '}
+                      <span className="text-gray-400">{chain.chain}</span>
+                    </dd>
+                  </div>
+                  <div className="sm:col-span-1">
+                    <dt className="text-sm font-medium text-gray-500">
+                      Market Cap
+                    </dt>
+                    <dd className="mt-1 text-sm text-slate-50">
+                      {props.market_cap}{' '}
+                      <span className="text-gray-400">{chain.chain}</span>
                     </dd>
                   </div>
                   <div className="sm:col-span-1">
@@ -90,6 +134,38 @@ export default function PortfolioCard(props: any) {
                       {props.description}
                     </dd>
                   </div>
+                  <form
+                    className="flex h-1/2"
+                    onSubmit={handleSubmit(stakeTokens)}
+                  >
+                    <SubmitButton text="Stake" />
+                    <FormTextInput
+                      type="number"
+                      placeholder="Tokens to stake"
+                      name="tokensToStake"
+                      register={register}
+                      default="100"
+                      className="h-full ml-4"
+                    />
+                    <FormTextInput
+                      type="number"
+                      placeholder="Seconds since 1970 as end date"
+                      name="secondsSince1970"
+                      register={register}
+                      default=""
+                      className="h-full ml-4"
+                    />
+                    <h3 className="text-white">
+                      Dual Stake Price:{' '}
+                      {web3React.library.utils.fromWei(
+                          web3React.library.utils
+                              .toBN(props.pricePerShare)
+                              .mul(web3React.library.utils.toBN(tokensToStake)),
+                          'ether',
+                      )}{' '}
+                      {chain.chain}
+                    </h3>
+                  </form>
                 </dl>
               </div>
               <div></div>
