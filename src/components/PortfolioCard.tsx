@@ -73,11 +73,13 @@ export default function PortfolioCard(props: any) {
                     />
                   </div>
                 </div>
-                <div>
+                <div className="pr-8 grid grid-cols-1">
                   <h1 className="mb-1 text-2xl font-semibold text-slate-50">
                     {props.name}
                   </h1>
-                  <p className="text-sm font-medium text-gray-500">Details</p>
+                  <p className="text-sm text-gray-500 truncate font-sm ...">
+                    {props.description}
+                  </p>
                 </div>
               </div>
 
@@ -128,35 +130,43 @@ export default function PortfolioCard(props: any) {
                     <dt className="text-sm font-medium text-gray-500">APY</dt>
                     <dd className="mt-1 text-sm text-slate-50">{props.apy}</dd>
                   </div>
-                  <div className="sm:col-span-2">
-                    <dt className="text-sm font-medium text-gray-500">About</dt>
-                    <dd className="mt-1 text-sm text-gray-500">
-                      {props.description}
-                    </dd>
-                  </div>
-                  <form
-                    className="flex h-1/2"
-                    onSubmit={handleSubmit(stakeTokens)}
-                  >
-                    <SubmitButton text="Stake" />
-                    <FormTextInput
-                      type="number"
-                      placeholder="Tokens to stake"
-                      name="tokensToStake"
-                      register={register}
-                      default="100"
-                      className="h-full ml-4"
-                    />
-                    <FormTextInput
-                      type="number"
-                      placeholder="Seconds since 1970 as end date"
-                      name="secondsSince1970"
-                      register={register}
-                      default=""
-                      className="h-full ml-4"
-                    />
-                    <h3 className="text-white">
-                      Dual Stake Price:{' '}
+                </dl>
+                <div className="px-6 py-6 mt-5 border sm:rounded-2xl border-slate-600">
+                  <form onSubmit={handleSubmit(stakeTokens)}>
+                    <div className="my-4 col-span-6 sm:col-span-3">
+                      <label
+                        htmlFor="tokens-amont"
+                        className="block text-sm font-medium text-slate-300"
+                      >
+                        Tokens to stake
+                      </label>
+                      <FormTextInput
+                        type="number"
+                        placeholder="Tokens to stake"
+                        name="tokensToStake"
+                        register={register}
+                        default="100"
+                      />
+                      <label
+                        htmlFor="tokens-amont"
+                        className="block mt-6 text-sm font-medium text-slate-300"
+                      >
+                        Staking Period
+                      </label>
+                      <div className="mt-1 sm:mt-0 sm:col-span-2"></div>
+
+                      <FormTextInput
+                        type="number"
+                        placeholder="Seconds since 1970 as end date"
+                        name="secondsSince1970"
+                        register={register}
+                        default=""
+                      />
+                    </div>
+                    <p className="text-sm font-medium text-gray-500">
+                      Dual Stake Price
+                    </p>
+                    <p className="text-slate-50">
                       {web3React.library.utils.fromWei(
                           web3React.library.utils
                               .toBN(props.pricePerShare)
@@ -164,11 +174,12 @@ export default function PortfolioCard(props: any) {
                           'ether',
                       )}{' '}
                       {chain.chain}
-                    </h3>
+                    </p>
+
+                    <SubmitButton text="Stake" className="mt-6" />
                   </form>
-                </dl>
+                </div>
               </div>
-              <div></div>
             </div>
           </section>
         </div>

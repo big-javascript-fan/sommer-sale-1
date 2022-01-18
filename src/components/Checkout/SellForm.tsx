@@ -41,32 +41,40 @@ export default function SellForm({purchasePriceWEI, id}: SellFormParams) {
   };
 
   return (
-    <form
-      className="flex flex-col items-center justify-center"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <FormInput
-        default={100}
-        placeholder="Shares"
-        name="shares"
-        type="number"
-        register={register}
-      />
-      {web3React.account != null ? (
-        <SubmitButton
-          disabled={parseInt(shares) == 0 || shares == ''}
-          text={
-            parseInt(shares) == 0 || shares == '' ?
-              en.t('invalidSellShares') :
-              en.t('sellShares', {tokens: parseInt(shares)})
-          }
-        />
-      ) : (
-        <SubmitButton
-          onClick={() => connectWallet()}
-          text={en.t('connect_wallet')}
-        />
-      )}
-    </form>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="my-4 col-span-6 sm:col-span-3">
+          <label
+            htmlFor="first-name"
+            className="block text-sm font-medium text-slate-300"
+          >
+            Shares
+          </label>
+          <FormInput
+            default={100}
+            placeholder="Shares"
+            name="shares"
+            type="number"
+            register={register}
+          />
+        </div>
+
+        {web3React.account != null ? (
+          <SubmitButton
+            disabled={parseInt(shares) == 0 || shares == ''}
+            text={
+              parseInt(shares) == 0 || shares == '' ?
+                en.t('invalidSellShares') :
+                en.t('sellShares', {tokens: parseInt(shares)})
+            }
+          />
+        ) : (
+          <SubmitButton
+            onClick={() => connectWallet()}
+            text={en.t('connect_wallet')}
+          />
+        )}
+      </form>
+    </div>
   );
 }

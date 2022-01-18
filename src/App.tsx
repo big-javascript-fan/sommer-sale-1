@@ -22,7 +22,7 @@ function App() {
         <Switch>
           <Route path="/mint" component={Mint} />
           <Route path="/projects" component={Projects} />
-          <Route path="/project/:id" component={Project} />
+          <Route path="/projects/:id" component={Project} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/" component={Home} />
         </Switch>

@@ -43,32 +43,39 @@ export default function PurchaseForm({
     purchaseShares(data.shares, purchasePriceWEI, id);
   };
   return (
-    <form
-      className="flex flex-col items-center justify-center"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <FormInput
-        default={100}
-        placeholder="Shares"
-        name="shares"
-        type="number"
-        register={register}
-      />
-      {web3React.account != null ? (
-        <SubmitButton
-          disabled={parseInt(shares) == 0 || shares == ''}
-          text={
-            parseInt(shares) == 0 || shares == '' ?
-              en.t('invalidPurchaseShares') :
-              en.t('purchaseShares', {tokens: parseInt(shares)})
-          }
-        />
-      ) : (
-        <SubmitButton
-          onClick={() => connectWallet()}
-          text={en.t('connect_wallet')}
-        />
-      )}
-    </form>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="my-4 col-span-6 sm:col-span-3">
+          <label
+            htmlFor="project-name"
+            className="block text-sm font-medium text-slate-300"
+          >
+            Project Name
+          </label>
+          <FormInput
+            default={100}
+            placeholder="Shares"
+            name="shares"
+            type="number"
+            register={register}
+          />
+        </div>
+        {web3React.account != null ? (
+          <SubmitButton
+            disabled={parseInt(shares) == 0 || shares == ''}
+            text={
+              parseInt(shares) == 0 || shares == '' ?
+                en.t('invalidPurchaseShares') :
+                en.t('purchaseShares', {tokens: parseInt(shares)})
+            }
+          />
+        ) : (
+          <SubmitButton
+            onClick={() => connectWallet()}
+            text={en.t('connect_wallet')}
+          />
+        )}
+      </form>
+    </div>
   );
 }

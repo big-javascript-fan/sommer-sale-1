@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .form_input {
-  @apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md text-slate-50 bg-gray-800 border-0;
+  @apply mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm  rounded-md text-slate-50 bg-gray-700 border-0;
 }
 
 .submit_btn {

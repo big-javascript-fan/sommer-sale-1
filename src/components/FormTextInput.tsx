@@ -12,7 +12,7 @@ interface FormInputProperties {
 const FormTextInput = (properties: FormInputProperties) => {
   return (
     <input
-      className={`mb-10 border-2 border-solid border-amber-500 ${properties.className}`}
+      className="form_input"
       defaultValue={properties.default}
       placeholder={properties.placeholder}
       type={properties.type}

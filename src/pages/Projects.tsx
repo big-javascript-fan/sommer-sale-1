@@ -1,3 +1,4 @@
+import {Link} from 'wouter';
 /**
  * @return {Array} fake data
  */
@@ -5,7 +6,7 @@ const ProjectsData = [
   {
     id: 1,
     name: 'XStairship Apartments',
-    href: '/projects/id',
+    href: 'projects/1',
     price: '354 VST',
     imageSrc:
       'https://685firstaverentals.com/uploads/application/files/static-gallery/2/building.jpg',
@@ -15,7 +16,7 @@ const ProjectsData = [
   {
     id: 2,
     name: 'Nomad Tumbler',
-    href: '#',
+    href: 'projects/2',
     price: '543.50 VST',
     imageSrc:
       'https://i.insider.com/5f08c2722618b952cd1e285f?width=1200&format=jpeg',
@@ -25,7 +26,7 @@ const ProjectsData = [
   {
     id: 3,
     name: 'Focus Paper Refill',
-    href: '#',
+    href: 'projects/3',
     price: '443 VST',
     imageSrc:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMgmvmilKZso_cYYxbiIPrNpxlmixJ_MTpUSzguX0vigvUm9LExTqcMRebDtEVztRXk6s&usqp=CAU',
@@ -35,7 +36,7 @@ const ProjectsData = [
   {
     id: 4,
     name: 'Machined Mechanical Pencil',
-    href: '#',
+    href: 'projects/4',
     price: '124 VST',
     imageSrc:
       'https://inhabitat.com/wp-content/blogs.dir/1/files/2015/08/Park-Garden-exterior.jpg',
@@ -57,7 +58,7 @@ export default function Projects() {
 
         <div className="mt-10 grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {ProjectsData.map((project) => (
-            <a key={project.id} href={project.href} className="group">
+            <Link key={project.id} href={project.href} className="group">
               <div className="w-full overflow-hidden bg-gray-200 aspect-w-2 aspect-h-1 rounded-3xl xl:aspect-w-7 xl:aspect-h-8">
                 <img
                   src={project.imageSrc}
@@ -67,7 +68,7 @@ export default function Projects() {
               </div>
               <h3 className="mt-4 text-m text-slate-200">{project.name}</h3>
               <p className="mt-1 text-m text-slate-400">{project.price}</p>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

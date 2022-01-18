@@ -10,7 +10,7 @@ import en from '../../localization/en';
 
 const CheckoutBar = () => {
   const [isSelling, setIsSelling] = useState(false);
-  const [, parameters] = useRoute('/project/:id');
+  const [, parameters] = useRoute('/projects/:id');
   if (parameters == undefined) throw new Error('Project not found');
   const [pricePerShare] = useCurrentSharePrice(parameters.id);
   const web3React = useWeb3React();
@@ -44,7 +44,7 @@ const CheckoutBar = () => {
         ) : (
           <PurchaseForm purchasePriceWEI={pricePerShare} id={parameters.id} />
         )}
-        <h2 className="text-center text-white">
+        <h2 className="my-6 font-medium text-m text-slate-50">
           Price per share:{' '}
           {web3React.library.utils.fromWei(pricePerShare, 'ether') +
             ' ' +
