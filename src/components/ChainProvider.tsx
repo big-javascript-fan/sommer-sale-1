@@ -19,9 +19,9 @@ function ChainProvider({children}: { children: any }) {
    * @param {number} chainId The Id of the chain to gather data on
    * @dev Get's the data associated with a specific chain Id
    */
-  async function getChain(chainId: number) {
+  async function getChain(chainId: number | null | undefined) {
     // If we can not get the chain Id default to ETH
-    if (chainId === undefined || chainId === null) chainId = 1;
+    if (chainId === undefined || chainId === null) chainId = 4;
     const chainQuery = await fetch('https://chainid.network/chains.json');
     const chains = await chainQuery.json();
     const chain = chains.find((chain: IChain) => chain.chainId === chainId);
@@ -31,7 +31,7 @@ function ChainProvider({children}: { children: any }) {
 
   useEffect(() => {
     const chainId = web3React.chainId;
-    if (chainId === undefined) throw new Error('ChainId is null');
+    // if (chainId === undefined) throw new Error('ChainId is null');
     getChain(chainId);
     // @ts-ignore
     if (window.ethereum) {

@@ -1,0 +1,546 @@
+@import '../node_modules/compass-mixins/lib/compass/css3';
+
+main {
+    background: black;
+    font-weight: 100;
+    color: #cccccc;
+    text-shadow: 0 0 35px rgb(255 255 255 / 100%);
+    padding-top: 30px;
+    padding-bottom: 120px;
+
+    .top-section {
+        position: relative;
+
+        .memory-mint-logo {
+            margin: 20px auto;
+            width: 100%;
+            max-width: 1200px;
+            img {
+                width: 100%;
+            }
+        }
+        p {
+            font-size: 40px;
+            font-weight: 100;
+            color: #cccccc;
+            text-align: center;
+        }
+        .memory-mint-description {
+            margin-top: 50px;
+            text-align: center;
+            color: white;
+
+            p {
+                font-size: 32px;
+                margin: 0 !important;
+            }
+        }
+        .presale-link {
+            display: block;
+            margin: auto auto;
+            width: 350px;
+            margin-top: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            font-weight: 600;
+            background-color: #94a4be;
+            padding: 10px;
+            box-shadow: rgb(255 255 255 / 16%) 0px 0px 30px 1px, rgb(255 255 255 / 6%) 0px 10px 36px 1px;;
+            p {
+                color: white;
+                opacity: 65%;
+                font-weight: 700;
+                font-size: 30px;
+                text-shadow: none;
+                line-height: 40px;
+            }
+        }
+        .sommer-travel-img-container {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 33%;
+            max-width: 380px;
+        }
+    }
+
+    .annoucement-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 40px;
+        margin-top: 50px;
+
+        .annoucement-logo {
+            width: 450px;
+            img {
+                width: 100%;
+            }
+        }
+        .social-icons {
+            margin-right: 40px;
+            display: flex;
+
+            img {
+                margin-right: 50px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    .annoucement-section {
+        margin-top: 10px;
+        color: white;
+        background-image: url('./assets/img/announce-bg.jpeg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+        .annoucement-body {
+            text-align: center;
+
+            h2 {
+                font-size: 40px;
+                font-weight: 500;
+                margin-top: 60px;
+            }
+            .annouce-description {
+                margin-top: 20px;
+
+                p {
+                    margin: 0 !important;
+                    font-size: 24px;
+                    font-weight: 400;
+                }
+            }
+            .annouce-items {
+                max-width: 900px;
+                margin: 40px auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .annouce-item {
+                    margin-top: 20px;
+                    color: white;
+                    text-align: left;
+
+                    .annouce-title {
+                        font-size: 24px;
+                        text-transform: uppercase;
+                    }
+                    .annouce-content {
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .annoucement-gltf {
+        background-image: url('./assets/img/gltf-bg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        .annoucement-body {
+            h2 {
+                text-align: center;
+                font-size: 40px;
+                margin-top: 60px;
+                margin-bottom: 60px;
+                font-weight: bold;
+            }
+            .annouce-main {
+                display: flex;
+                flex-direction: row;
+                margin: 40px 20px;
+                .annouce-description {
+                    p {
+                        margin-bottom: 25px;
+                        color: white;
+                        font-size: 26px;
+                    }
+                }
+                .gltf-viewer {
+                    padding: 0 50px;
+                    background: white;
+                    width: 600px;
+                    height: 300px;
+                }
+            }
+        }
+    }
+    
+    .annoucement-video {
+        background-image: url('./assets/img/video-bg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        .annoucement-body {
+            h2 {
+                text-align: center;
+                font-size: 40px;
+                margin-top: 60px;
+                font-weight: bold;
+            }
+            .annouce-description {
+                margin-top: 10px;
+                text-align: center;
+                opacity: 80%;
+                p {
+                    margin-bottom: 25px;
+                    color: white;
+                    font-size: 28px;
+                    font-weight: 300;
+                    margin-bottom: 0;
+                }
+            }
+            .annouce-main {
+                margin: 60px 20px;
+                display: flex;
+                flex-direction: row;
+                .annouce-description {
+                    padding-left: 30px;
+                    p {
+                        margin-bottom: 25px;
+                        color: white;
+                        font-size: 26px;
+                    }
+                }
+                .video-player {
+                    padding: 0 50px;
+                    background: white;
+                    width: 600px;
+                    height: 300px;
+                }
+                .video-description {
+                    margin-left: 40px;
+                    p {
+                        margin-bottom: 25px;
+                        color: white;
+                        font-size: 26px;
+                    }
+
+                    .sample-xr-button {
+                        margin: auto auto;
+                        width: 350px;
+                        margin-top: 40px;
+                        border-radius: 50%;
+                        font-size: 24px;
+                        font-weight: 600;
+                        background-color: #94a4be;
+                        padding: 10px;
+                        box-shadow: rgb(255 255 255 / 16%) 0px 0px 50px 1px, rgb(255 255 255 / 6%) 0px 10px 36px 1px;;
+                        p {
+                            color: white;
+                            opacity: 80%;
+                            text-transform: uppercase;
+                            font-weight: 700;
+                            font-size: 30px;
+                            margin: 0 !important;
+                            text-align: center;
+                            text-shadow: none;
+                            line-height: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .roadmap {
+        margin-top: 20px;
+        color: white;
+        margin: auto 40px;
+        background-image: url('./assets/img/roadmap-bg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+        h2 {
+            text-transform: uppercase;
+            font-size: 40px;
+            font-weight: 400;
+            opacity: 80%;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-section {
+            margin-left: 30px;
+            margin-top: 20px;
+            color: white;
+            opacity: 80%;
+
+            .roadmap-section-title {
+                text-transform: uppercase;
+                font-weight: 400;
+                font-size: 24px;
+            }
+            .roadmap-section-description {
+                margin-left: 25px;
+                font-size: 22px;
+                list-style: circle;
+            }
+        }
+    }
+    .faq {
+        text-align: right;
+        margin: auto 40px;
+        margin-top: 60px;
+        background-image: url('./assets/img/roadmap-bg.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+        h2 {
+            text-transform: uppercase;
+            font-size: 40px;
+            font-weight: 400;
+            opacity: 80%;
+            margin-bottom: 40px;
+        }
+
+        .roadmap-section {
+            margin-top: 20px;
+            color: white;
+
+            .roadmap-section-title {
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: 24px;
+            }
+            p {
+                font-size: 22px;
+            }
+        }
+    }
+}
+
+
+// Default options for table style
+$table-breakpoint: 480px;
+$table-background-color: #FFF;
+$table-text-color: #024457;
+$table-outer-border: 1px solid #167F92;
+$table-cell-border: 1px solid #D9E4E6;
+
+// Extra options for table style (parse these arguments when including your mixin)
+$table-border-radius: 10px;
+$table-highlight-color: #EAF3F3;
+$table-header-background-color: #167F92;
+$table-header-text-color: #FFF;
+$table-header-border: 1px solid #FFF;
+
+// The Responstable mixin
+
+@mixin responstable(
+  $breakpoint: $table-breakpoint,
+  $background-color: $table-background-color,
+  $text-color: $table-text-color,
+  $outer-border: $table-outer-border,
+  $cell-border: $table-cell-border,
+  $border-radius: none,
+  $highlight-color: none,
+  $header-background-color: $table-background-color,
+  $header-text-color: $table-text-color,
+  $header-border: $table-cell-border) {
+  
+  .responstable {
+    margin: 1em 0;
+    width: 100%;
+    overflow: hidden;  
+    background: $background-color;
+    color: $text-color;
+    border-radius: $border-radius;
+    border: $outer-border;
+  
+    tr {
+      border: $cell-border; 
+      &:nth-child(odd) { // highlight the odd rows with a color
+        background-color: $highlight-color;
+      }  
+    }
+  
+    th {
+      display: none; // hide all the table header for mobile
+      border: $header-border;
+      background-color: $header-background-color;
+      color: $header-text-color;
+      padding: 1em;  
+      &:first-child { // show the first table header for mobile
+        display: table-cell;
+        text-align: center;
+      }
+      &:nth-child(2) { // show the second table header but replace the content with the data-th from the markup for mobile
+        display: table-cell;
+        span {display:none;}
+        &:after {content:attr(data-th);}
+      }
+      @media (min-width: $breakpoint) {
+        &:nth-child(2) { // hide the data-th and show the normal header for tablet and desktop
+          span {display: block;}
+          &:after {display: none;}
+        }
+      }
+    }
+  
+    td {
+      display: block; // display the table data as one block for mobile
+      word-wrap: break-word;
+      max-width: 7em;
+      &:first-child { 
+        display: table-cell; // display the first one as a table cell (radio button) for mobile
+        text-align: center;
+        border-right: $cell-border;
+      }
+      @media (min-width: $breakpoint) {
+        border: $cell-border;
+      }
+    }
+  
+    th, td {
+      text-align: left;
+      margin: .5em 1em;  
+      @media (min-width: $breakpoint) {
+        display: table-cell; // show the table as a normal table for tablet and desktop
+        padding: 1em;
+      }
+    }  
+  }    
+}
+
+// Include the mixin (with extra options as overrides)
+
+@include responstable(
+  $border-radius: $table-border-radius,
+  $highlight-color: $table-highlight-color,
+  $header-background-color: $table-header-background-color,
+  $header-text-color: $table-header-text-color,
+  $header-border: $table-header-border);
+.mint-page {
+    background-color: blueviolet;
+
+    .header {
+        margin: 30px 60px;
+
+        a {
+            font-size: 40px;
+            text-transform: uppercase;
+            font-weight: 400;
+            opacity: 80%;
+            color: white;
+        }
+        h1 {
+            font-size: 44px;
+            font-weight: 100;
+            color: white;
+            opacity: 80%;
+        }
+    }
+
+    .mint-container {
+        padding-left: 60px;
+        padding-right: 60px;
+        position: relative;
+        background-image: url("./assets/img/som-dress.png");
+        background-size: 120%;
+        background-repeat: no-repeat;
+        background-position-x: center;
+
+        .sommer-bg {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+        .about-collection {
+            margin: auto auto;
+            width: 500px;
+            background-color: #167F92;
+            color: white;
+            border-radius: 20px;
+            padding: 20px;
+
+            p {
+                font-size: 20px;
+                text-transform: uppercase;
+                text-align: center;
+
+                &.collection-description {
+                    margin-top: 20px;
+                    text-transform: none;
+                }
+            }
+        }
+
+        .series-container {
+            .serie-description {
+                color: white;
+                text-align: left;
+
+                h2 {
+                    text-transform: uppercase;
+                    font-size: 34px;
+                    font-style: italic;
+                }
+                p {
+                    font-size: 28px;
+                }
+                .serie-text {
+                    margin-top: 20px;
+                    font-style: italic;
+                    font-size: 24px;
+                }
+            }
+            
+            .serie-sale {
+                display: flex;
+                flex-direction: row;
+                margin-top: 30px;
+
+                .gltf-viewer {
+                    width: 300px;
+                    height: 300px;
+                    text-align: center;
+                    
+                    .gltf-content {
+                        width: 200px;
+                        height: 200px;
+                    }
+                    p {
+                        text-transform: uppercase;
+                        font-size: 24px;
+                        color: grey;
+                        opacity: 0.9;
+                    }
+                }
+                .responstable {
+
+                }
+            }
+        }
+    }
+
+    .reward-container {
+        background-color: black;
+        color: white;
+        opacity: 0.8;
+        padding-left: 60px;
+        padding-right: 60px;
+        padding-top: 30px;
+        padding-bottom: 40px;
+
+        .reward-section {
+            margin-top: 40px;
+            font-size: 28px;
+
+            p {
+                text-transform: uppercase;
+            }
+            ul {
+                list-style: circle;
+                margin-left: 10px;
+            }
+        }
+    }
+}

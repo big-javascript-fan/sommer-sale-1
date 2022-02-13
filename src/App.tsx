@@ -17,7 +17,6 @@ function App() {
   return (
     <>
       <ReactNotification />
-      <Header />
       <div className="flex flex-col min-h-screen overflow-hidden bg-gray-900">
         <Switch>
           <Route path="/mint" component={Mint} />
@@ -27,7 +26,6 @@ function App() {
           <Route path="/" component={Home} />
         </Switch>
       </div>
-      <Footer />
     </>
   );
 }
