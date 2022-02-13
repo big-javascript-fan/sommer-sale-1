@@ -1,0 +1,25 @@
+.button-wrapper {
+  color: white;
+  background-color: #e47d32;
+  padding: 8px 24px;
+  border: none;
+  min-width: 153px;
+  min-height: 38px;
+  font-size: 24px;
+  font-family: "Kadwa", serif;
+  border-radius: 4px;
+}
+.background-light {
+  border: solid 1px #51a8db;
+  background-color: white;
+  color: #51a8db;
+}
+.border-black {
+  border: solid 1px #4a4a4a;
+  color: #4a4a4a;
+  background-color: white;
+}
+.background-white {
+  background-color: white !important;
+  color: #51a8db;
+}

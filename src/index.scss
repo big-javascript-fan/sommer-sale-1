@@ -1,5 +1,24 @@
 @import '../node_modules/compass-mixins/lib/compass/css3';
 
+$colorLightBlue: #51a8db;
+$colorDarkBlue: #2b5485;
+$colorLightGreen: #19c79d;
+$colorDarkGreen: #1fa095;
+$colorTeal: #257a8d;
+$colorBasic: rgba(81, 168, 219, 0.2);
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
 main {
     background: black;
     font-weight: 100;
@@ -53,6 +72,7 @@ main {
                 font-size: 30px;
                 text-shadow: none;
                 line-height: 40px;
+                margin: 0 !important;
             }
         }
         .sommer-travel-img-container {
@@ -419,9 +439,10 @@ $table-header-border: 1px solid #FFF;
   $header-border: $table-header-border);
 .mint-page {
     background-color: blueviolet;
+    padding-top: 30px;
 
     .header {
-        margin: 30px 60px;
+        margin: auto 60px;
 
         a {
             font-size: 40px;
