@@ -541,22 +541,35 @@ $table-header-border: 1px solid #FFF;
 
                 .gltf-viewer {
                     width: 300px;
-                    height: 300px;
+                    height: 350px;
                     text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     
                     .gltf-content {
-                        width: 200px;
-                        height: 200px;
+                        width: 220px;
+                        height: 220px;
+                        background: white;
+                        border-radius: 50%;
+
+                        div {
+                            border-radius: 50%;
+                        }
                     }
                     p {
                         text-transform: uppercase;
                         font-size: 24px;
-                        color: grey;
+                        color: white;
                         opacity: 0.9;
+                        margin-top: 10px;;
                     }
                 }
+                .nft-details-container {
+                    margin-left: 30px;
+                }
                 .responstable {
-
+                    margin: 0 !important;
                 }
             }
         }

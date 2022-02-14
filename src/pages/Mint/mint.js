@@ -1,4 +1,63 @@
+import React, { Suspense, useRef, useEffect } from "react";
+import { Canvas } from "react-three-fiber";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import { Link } from 'react-router-dom';
+
+function ModelHair(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/hair.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
+
+function ModelKiss(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/kiss.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
+function ModelEye(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/eye.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
 /**
  * @return {jsx} rendered component
  */
@@ -27,7 +86,13 @@ const Mint = () => {
           <div className='serie-sale'>
             <div className="gltf-viewer">
               <div className="gltf-content">
-
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <ModelHair />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
               </div>
               <p>"Playing with my hair"</p>
             </div>
@@ -72,9 +137,15 @@ const Mint = () => {
           <div className='serie-sale'>
             <div className="gltf-viewer">
               <div className="gltf-content">
-
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <ModelKiss />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
               </div>
-              <p>"Playing with my hair"</p>
+              <p>"Monkey Kiss"</p>
             </div>
             <div className="nft-details-container">
               <table className="responstable">
@@ -117,9 +188,15 @@ const Mint = () => {
           <div className='serie-sale'>
             <div className="gltf-viewer">
               <div className="gltf-content">
-
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <ModelEye />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
               </div>
-              <p>"Playing with my hair"</p>
+              <p>"Those Eyes"</p>
             </div>
             <div className="nft-details-container">
               <table className="responstable">
