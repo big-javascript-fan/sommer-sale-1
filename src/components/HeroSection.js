@@ -1,3 +1,7 @@
+import React, { Suspense, useRef, useEffect } from "react";
+import { Canvas } from "react-three-fiber";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+
 import { Link } from 'react-router-dom';
 
 import TopLogo from '../assets/img/top-logo.png';
@@ -5,6 +9,25 @@ import SomTraveler from '../assets/img/traveller.png';
 import OpenseaIcon from '../assets/img/opensea.png';
 import InstaIcon from '../assets/img/instagram.png';
 import SmallMintLogo from '../assets/img/sm-mint-logo.png';
+
+function Model(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/kiss.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
 
 /**
  * @return {jsx} rendered component
@@ -93,6 +116,13 @@ export default function HeroSection() {
                 <p>That simple click transports you into sphere, where you can experience the memory in all 360 degrees:</p>
               </div>
               <div className="gltf-viewer">
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <Model />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
               </div>
             </div>
           </div>
