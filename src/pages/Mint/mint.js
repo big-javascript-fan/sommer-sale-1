@@ -32,7 +32,6 @@ const Mint = () => {
               <p>"Playing with my hair"</p>
             </div>
             <div className="nft-details-container">
-              <h4>Nft Details</h4>
               <table className="responstable">
                 <tr>
                   <th>RELEASE</th>
